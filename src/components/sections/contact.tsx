@@ -89,25 +89,9 @@ export default function Contact() {
                 <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                 <div>
                   <h4 className="font-semibold">Email</h4>
-                  <a href="mailto:contact@snowbasestudio.com" className="text-muted-foreground hover:text-primary">
-                    contact@snowbasestudio.com
+                  <a href="mailto:hi@snowbasestudio.com" className="text-muted-foreground hover:text-primary">
+                    hi@snowbasestudio.com
                   </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                <div>
-                  <h4 className="font-semibold">Phone</h4>
-                  <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary">
-                    (123) 456-7890
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                <div>
-                  <h4 className="font-semibold">Location</h4>
-                  <p className="text-muted-foreground">123 Snowy Lane, Tech Valley, 12345</p>
                 </div>
               </div>
             </div>
