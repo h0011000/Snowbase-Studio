@@ -237,7 +237,6 @@
                 <i data-lucide="mail" class="h-8 w-8 text-primary"></i>
                 <div>
                   <h4 class="text-xl font-semibold">Email</h4>
-                  <a href="mailto:hi@snowbasestudio.com" class="text-xl text-muted-foreground hover:text-primary">hi@snowbasestudio.com</a>
                 </div>
               </div>
             </div>
@@ -245,42 +244,4 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-border bg-background">
-    <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row">
-      <div class="flex items-center gap-2">
-        <img src="favicon.ico" alt="SnowBase Studio logo" class="h-6 w-6" />
-        <span class="text-lg font-semibold">SnowBase Studio</span>
-      </div>
-      <p class="text-sm text-muted-foreground">&copy; <span id="year"></span> SnowBase Studio. All rights reserved.</p>
-      
-    </div>
-  </footer>
-
-  <script>
-    // Initialize lucide icons
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide && window.lucide.createIcons) {
-        window.lucide.createIcons();
-      }
-      // Dynamic year in footer
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-
-      // Mobile menu toggle
-      const btn = document.getElementById('menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      btn && btn.addEventListener('click', () => {
-        if (!menu) return;
-        menu.classList.toggle('hidden');
-      });
-      // Close menu on link click
-      document.querySelectorAll('#mobile-menu [data-close-menu]').forEach((el) => {
-        el.addEventListener('click', () => menu && menu.classList.add('hidden'));
-      });
-    });
-  </script>
-</body>
 </html>
