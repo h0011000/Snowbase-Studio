@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SnowBase Studio</title>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%3Crect width="64" height="64" rx="12" fill="%23e6eef9"/%3E%3Ctext x="50%25" y="54%25" text-anchor="middle" dominant-baseline="middle" font-size="44"%3E%E2%9D%84%EF%B8%8F%3C/text%3E%3C/svg%3E' />
+  <meta name="description" content="AI-Powered, Human-Driven Solutions by SnowBase Studio" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --background: 216 47% 91%;
+      --foreground: 223 52% 20%;
+      --card: 216 47% 96%;
+      --card-foreground: 223 52% 20%;
+      --popover: 216 47% 96%;
+      --popover-foreground: 223 52% 20%;
+      --primary: 223 52% 30%;
+      --primary-foreground: 216 47% 98%;
+      --secondary: 216 47% 85%;
+      --secondary-foreground: 223 52% 30%;
+      --muted: 216 47% 85%;
+      --muted-foreground: 223 52% 25%;
+      --accent: 174 51% 38%;
+      --accent-foreground: 216 47% 98%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 216 47% 80%;
+      --input: 216 47% 80%;
+      --ring: 174 51% 38%;
+      --radius: 0.5rem;
+    }
+
+    /* Minimal token utility mappings to mimic the app's theme */
+    .bg-background { background-color: hsl(var(--background)); }
+    .text-foreground { color: hsl(var(--foreground)); }
+    .bg-secondary { background-color: hsl(var(--secondary)); }
+    .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+    .text-primary { color: hsl(var(--primary)); }
+    .bg-primary { background-color: hsl(var(--primary)); }
+    .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+    .text-foreground\/80 { color: hsl(var(--foreground) / 0.8); }
+    .border-border { border-color: hsl(var(--border)); }
+    .bg-background-95 { background-color: hsl(var(--background) / 0.95); }
+    .bg-background-80 { background-color: hsl(var(--background) / 0.80); }
+    .border-border-40 { border-color: hsl(var(--border) / 0.40); }
+    .bg-primary-10 { background-color: hsl(var(--primary) / 0.10); }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
+    /* Simple button styles to replace shadcn/ui Button */
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.375rem; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 500; transition: background-color .2s, color .2s, border-color .2s, filter .2s; }
+    .btn-primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+    .btn-outline { border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); background-color: transparent; }
+    .btn:hover { filter: brightness(1.05); }
+
+    /* Simple card */
+    .card { border-radius: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06); padding: 1.5rem; background-color: hsl(var(--card)); color: hsl(var(--card-foreground)); }
+
+    /* Badge */
+    .badge { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: hsl(var(--secondary)); color: hsl(var(--foreground)); }
+
+    /* Backdrop blur helper */
+    .backdrop-blur { backdrop-filter: blur(8px); }
+
+    /* Hide utility for mobile menu */
+    .hidden { display: none; }
+  </style>
+</head>
+<body class="bg-background text-foreground">
+  <!-- Header -->
+  <header id="site-header" class="sticky top-0 z-50 w-full border-b border-border-40 bg-background-95 backdrop-blur">
+    <div class="container mx-auto flex h-16 items-center justify-between px-4">
+      <a href="#home" class="flex items-center gap-2">
+        <i data-lucide="snowflake" class="h-6 w-6 text-primary"></i>
+        <span class="text-lg font-semibold">SnowBase Studio</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden gap-6 md:flex">
+        <a href="#home" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Home</a>
+        <a href="#services" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Services</a>
+        <a href="#about" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">About</a>
+        <a href="#team" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Expertise</a>
+        <a href="#contact" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="btn btn-primary hidden md:inline-flex">Contact Us</a>
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden rounded-md border border-border p-2" aria-label="Toggle navigation">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-border bg-background">
+      <div class="container mx-auto flex flex-col gap-4 p-4">
+        <a href="#home" class="text-sm font-medium" data-close-menu>Home</a>
+        <a href="#services" class="text-sm font-medium" data-close-menu>Services</a>
+        <a href="#about" class="text-sm font-medium" data-close-menu>About</a>
+        <a href="#team" class="text-sm font-medium" data-close-menu>Expertise</a>
+        <a href="#contact" class="btn btn-primary w-full" data-close-menu>Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero -->
+    <section id="home" class="w-full bg-gradient-to-br from-background to-secondary py-24 md:py-32 lg:py-40">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="mx-auto max-w-3xl text-center">
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            AI-Powered, Human-Driven Solutions
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+            We build intelligent systems that amplify human potential, turning your complex challenges into impactful, data-driven outcomes.
+          </p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="#contact" class="btn btn-primary text-base">Get Started</a>
+            <a href="#portfolio" class="btn btn-outline text-base">Our Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="w-full bg-background py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Core Services</h2>
+          <p class="mt-4 text-lg text-muted-foreground">We provide a comprehensive suite of AI services to transform your business.</p>
+        </div>
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <!-- Card 1 -->
+          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
+              <i data-lucide="brain-circuit" class="h-8 w-8 text-primary"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Machine Learning Solutions</h3>
+            <p class="mt-2 text-sm text-muted-foreground">We develop and deploy predictive models that uncover insights, automate processes, and drive business growth with unparalleled accuracy.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
+              <i data-lucide="users" class="h-8 w-8 text-primary"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">AI Consulting</h3>
+            <p class="mt-2 text-sm text-muted-foreground">Our experts help you navigate the AI landscape, crafting a strategic roadmap to integrate artificial intelligence into your core business strategy.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
+              <i data-lucide="code" class="h-8 w-8 text-primary"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Custom AI Development</h3>
+            <p class="mt-2 text-sm text-muted-foreground">From natural language processing to computer vision, we build bespoke AI applications tailored to your unique operational needs and challenges.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
+              <i data-lucide="line-chart" class="h-8 w-8 text-primary"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Data Analytics</h3>
+            <p class="mt-2 text-sm text-muted-foreground">Transform your raw data into actionable intelligence. We provide advanced analytics services that reveal trends and inform strategic decisions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="w-full bg-secondary py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">About SnowBase Studio</h2>
+            <div class="space-y-4 text-muted-foreground">
+              <p class="text-lg font-semibold text-primary">Our mission is to democratize artificial intelligence, making its power accessible and beneficial for businesses of all sizes.</p>
+              <p>Founded by a team of passionate AI researchers and engineers, SnowBase Studio was built on the principle that technology should serve humanity. We believe in a collaborative approach, working closely with our clients to understand their vision and co-create solutions that deliver real-world value.</p>
+              <p>What sets us apart is our commitment to ethical AI and our focus on building long-term partnerships. We don't just deliver code; we deliver sustainable, scalable AI strategies that grow with your business.</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <img src="https://placehold.co/600x400.png" alt="SnowBase Studio Team" class="rounded-xl shadow-xl" width="600" height="400" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team / Expertise -->
+    <section id="team" class="w-full bg-secondary py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Expertise & Technology Stack</h2>
+          <p class="mt-4 text-lg text-muted-foreground">Our team comprises seasoned experts with decades of combined experience in AI and software engineering. We leverage cutting-edge technologies to build robust, scalable, and innovative solutions.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-2">
+            <span class="badge">Python</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">Scikit-learn</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">AWS</span>
+            <span class="badge">Google Cloud</span>
+            <span class="badge">Azure</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Kubernetes</span>
+            <span class="badge">SQL</span>
+            <span class="badge">NoSQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="w-full bg-background py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact Us</h2>
+          <p class="mt-4 text-lg text-muted-foreground">Have a project in mind? Let's talk about how we can help you.</p>
+        </div>
+        <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-16">
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold">Get in Touch</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <i data-lucide="mail" class="mt-1 h-5 w-5 flex-shrink-0 text-primary"></i>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <a href="mailto:contact@snowbasestudio.com" class="text-muted-foreground hover:text-primary">contact@snowbasestudio.com</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <i data-lucide="phone" class="mt-1 h-5 w-5 flex-shrink-0 text-primary"></i>
+                <div>
+                  <h4 class="font-semibold">Phone</h4>
+                  <a href="tel:+1234567890" class="text-muted-foreground hover:text-primary">(123) 456-7890</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <i data-lucide="map-pin" class="mt-1 h-5 w-5 flex-shrink-0 text-primary"></i>
+                <div>
+                  <h4 class="font-semibold">Location</h4>
+                  <p class="text-muted-foreground">123 Snowy Lane, Tech Valley, 12345</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="mb-2 block text-sm font-medium">Name</label>
+              <input id="name" name="name" required placeholder="Your Name" class="w-full rounded-md border border-border bg-white/70 px-3 py-2 outline-none focus:ring-2" />
+            </div>
+            <div>
+              <label for="email" class="mb-2 block text-sm font-medium">Email</label>
+              <input id="email" name="email" type="email" required placeholder="your.email@example.com" class="w-full rounded-md border border-border bg-white/70 px-3 py-2 outline-none focus:ring-2" />
+            </div>
+            <div>
+              <label for="projectType" class="mb-2 block text-sm font-medium">Project Type</label>
+              <select id="projectType" name="projectType" required class="w-full rounded-md border border-border bg-white/70 px-3 py-2 outline-none focus:ring-2">
+                <option value="" disabled selected>Select a project type</option>
+                <option value="ai-consulting">AI Consulting</option>
+                <option value="custom-development">Custom Development</option>
+                <option value="data-analytics">Data Analytics</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="mb-2 block text-sm font-medium">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell us a little bit about your project" class="w-full resize-none rounded-md border border-border bg-white/70 px-3 py-2 outline-none focus:ring-2" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border bg-background">
+    <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row">
+      <div class="flex items-center gap-2">
+        <i data-lucide="snowflake" class="h-6 w-6 text-primary"></i>
+        <span class="text-lg font-semibold">SnowBase Studio</span>
+      </div>
+      <p class="text-sm text-muted-foreground">&copy; <span id="year"></span> SnowBase Studio. All rights reserved.</p>
+      <div class="flex items-center gap-2">
+        <a class="rounded-md p-2 hover:bg-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i data-lucide="github" class="h-5 w-5"></i>
+        </a>
+        <a class="rounded-md p-2 hover:bg-secondary" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i data-lucide="linkedin" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize lucide icons
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide && window.lucide.createIcons) {
+        window.lucide.createIcons();
+      }
+      // Dynamic year in footer
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      // Mobile menu toggle
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn && btn.addEventListener('click', () => {
+        if (!menu) return;
+        menu.classList.toggle('hidden');
+      });
+      // Close menu on link click
+      document.querySelectorAll('#mobile-menu [data-close-menu]').forEach((el) => {
+        el.addEventListener('click', () => menu && menu.classList.add('hidden'));
+      });
+    });
+  </script>
+</body>
+</html>
