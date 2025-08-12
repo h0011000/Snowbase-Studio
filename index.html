@@ -70,9 +70,34 @@
 
     /* Hide utility for mobile menu */
     .hidden { display: none; }
+
+    /* Falling snowflakes */
+    .snowflakes { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .snowflake { position: absolute; top: -10%; color: hsl(var(--foreground) / 0.15); opacity: 0.7; will-change: transform; }
+    @keyframes snowfall {
+      0% { transform: translate3d(var(--x, 0), -10%, 0) rotate(0deg); }
+      100% { transform: translate3d(calc(var(--x, 0) + 0px), 110%, 0) rotate(360deg); }
+    }
+    /* Create variety */
+    .snowflake { animation: snowfall var(--dur, 12s) linear infinite; font-size: var(--size, 12px); left: var(--left, 50%); animation-delay: var(--delay, 0s); }
   </style>
 </head>
 <body class="bg-background text-foreground">
+  <!-- Falling snowflakes background -->
+  <div class="snowflakes" aria-hidden="true">
+    <span class="snowflake" style="--left:5%; --size:10px; --dur:14s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:12%; --size:12px; --dur:16s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:20%; --size:8px; --dur:12s; --delay:-3s">❄</span>
+    <span class="snowflake" style="--left:28%; --size:9px; --dur:18s; --delay:-7s">❄</span>
+    <span class="snowflake" style="--left:36%; --size:11px; --dur:15s; --delay:-4s">❄</span>
+    <span class="snowflake" style="--left:44%; --size:10px; --dur:17s; --delay:-8s">❄</span>
+    <span class="snowflake" style="--left:52%; --size:7px; --dur:13s; --delay:-1s">❄</span>
+    <span class="snowflake" style="--left:60%; --size:9px; --dur:16s; --delay:-5s">❄</span>
+    <span class="snowflake" style="--left:68%; --size:12px; --dur:19s; --delay:-9s">❄</span>
+    <span class="snowflake" style="--left:76%; --size:8px; --dur:12s; --delay:-3s">❄</span>
+    <span class="snowflake" style="--left:84%; --size:10px; --dur:14s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:92%; --size:9px; --dur:18s; --delay:-2s">❄</span>
+  </div>
   <!-- Header -->
   <header id="site-header" class="sticky top-0 z-50 w-full border-b border-border-40 bg-background-95 backdrop-blur">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
@@ -109,7 +134,7 @@
     </div>
   </header>
 
-  <main class="flex-1">
+  <main class="relative z-10 flex-1">
     <!-- Hero -->
     <section id="home" class="w-full bg-gradient-to-br from-background to-secondary py-24 md:py-32 lg:py-40">
       <div class="container mx-auto px-4 md:px-6">
@@ -205,14 +230,14 @@
           <p class="mt-4 text-lg text-muted-foreground">Have a project in mind? Let's talk about how we can help you.</p>
         </div>
         <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-16">
-          <div class="space-y-6">
+          <div class="space-y-6 text-center">
             <h3 class="text-2xl font-bold">Get in Touch</h3>
             <div class="space-y-4">
-              <div class="flex items-start gap-4">
-                <i data-lucide="mail" class="mt-1 h-5 w-5 flex-shrink-0 text-primary"></i>
+              <div class="flex flex-col items-center gap-3">
+                <i data-lucide="mail" class="h-8 w-8 text-primary"></i>
                 <div>
-                  <h4 class="font-semibold">Email</h4>
-                  <a href="mailto:hi@snowbasestudio.com" class="text-muted-foreground hover:text-primary">hi@snowbasestudio.com</a>
+                  <h4 class="text-xl font-semibold">Email</h4>
+                  <a href="mailto:hi@snowbasestudio.com" class="text-lg text-muted-foreground hover:text-primary">hi@snowbasestudio.com</a>
                 </div>
               </div>
             </div>
