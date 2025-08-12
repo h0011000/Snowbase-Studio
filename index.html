@@ -83,20 +83,23 @@
   </style>
 </head>
 <body class="bg-background text-foreground">
-  <!-- Falling snowflakes background -->
+  <!-- Global falling snowflakes (visible site-wide) -->
   <div class="snowflakes" aria-hidden="true">
-    <span class="snowflake" style="--left:5%; --size:10px; --dur:14s; --delay:-2s">❄</span>
-    <span class="snowflake" style="--left:12%; --size:12px; --dur:16s; --delay:-6s">❄</span>
-    <span class="snowflake" style="--left:20%; --size:8px; --dur:12s; --delay:-3s">❄</span>
-    <span class="snowflake" style="--left:28%; --size:9px; --dur:18s; --delay:-7s">❄</span>
-    <span class="snowflake" style="--left:36%; --size:11px; --dur:15s; --delay:-4s">❄</span>
-    <span class="snowflake" style="--left:44%; --size:10px; --dur:17s; --delay:-8s">❄</span>
-    <span class="snowflake" style="--left:52%; --size:7px; --dur:13s; --delay:-1s">❄</span>
-    <span class="snowflake" style="--left:60%; --size:9px; --dur:16s; --delay:-5s">❄</span>
-    <span class="snowflake" style="--left:68%; --size:12px; --dur:19s; --delay:-9s">❄</span>
-    <span class="snowflake" style="--left:76%; --size:8px; --dur:12s; --delay:-3s">❄</span>
-    <span class="snowflake" style="--left:84%; --size:10px; --dur:14s; --delay:-6s">❄</span>
-    <span class="snowflake" style="--left:92%; --size:9px; --dur:18s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:3%; --size:12px; --dur:16s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:8%; --size:9px; --dur:12s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:14%; --size:14px; --dur:18s; --delay:-4s">❄</span>
+    <span class="snowflake" style="--left:20%; --size:10px; --dur:15s; --delay:-8s">❄</span>
+    <span class="snowflake" style="--left:27%; --size:11px; --dur:17s; --delay:-3s">❄</span>
+    <span class="snowflake" style="--left:33%; --size:8px; --dur:13s; --delay:-5s">❄</span>
+    <span class="snowflake" style="--left:40%; --size:16px; --dur:20s; --delay:-7s">❄</span>
+    <span class="snowflake" style="--left:47%; --size:9px; --dur:14s; --delay:-1s">❄</span>
+    <span class="snowflake" style="--left:54%; --size:12px; --dur:16s; --delay:-9s">❄</span>
+    <span class="snowflake" style="--left:61%; --size:10px; --dur:15s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:69%; --size:13px; --dur:18s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:76%; --size:9px; --dur:12s; --delay:-4s">❄</span>
+    <span class="snowflake" style="--left:83%; --size:15px; --dur:19s; --delay:-8s">❄</span>
+    <span class="snowflake" style="--left:90%; --size:11px; --dur:16s; --delay:-5s">❄</span>
+    <span class="snowflake" style="--left:96%; --size:10px; --dur:14s; --delay:-3s">❄</span>
   </div>
   <!-- Header -->
   <header id="site-header" class="sticky top-0 z-50 w-full border-b border-border-40 bg-background-95 backdrop-blur">
@@ -136,8 +139,8 @@
 
   <main class="relative z-10 flex-1">
     <!-- Hero -->
-    <section id="home" class="w-full bg-gradient-to-br from-background to-secondary py-24 md:py-32 lg:py-40">
-      <div class="container mx-auto px-4 md:px-6">
+    <section id="home" class="relative overflow-hidden w-full bg-gradient-to-br from-background to-secondary py-24 md:py-32 lg:py-40">
+      <div class="relative z-10 container mx-auto px-4 md:px-6">
         <div class="mx-auto max-w-3xl text-center">
           <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             AI-Powered, Human-Driven Solutions
@@ -280,14 +283,7 @@
         <span class="text-lg font-semibold">SnowBase Studio</span>
       </div>
       <p class="text-sm text-muted-foreground">&copy; <span id="year"></span> SnowBase Studio. All rights reserved.</p>
-      <div class="flex items-center gap-2">
-        <a class="rounded-md p-2 hover:bg-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i data-lucide="github" class="h-5 w-5"></i>
-        </a>
-        <a class="rounded-md p-2 hover:bg-secondary" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i data-lucide="linkedin" class="h-5 w-5"></i>
-        </a>
-      </div>
+      
     </div>
   </footer>
 
