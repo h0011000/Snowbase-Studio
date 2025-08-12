@@ -144,6 +144,9 @@ export default function Contact() {
                         <SelectItem value="computer-vision">Computer Vision</SelectItem>
                         <SelectItem value="automation">AI-Powered Automation</SelectItem>
                         <SelectItem value="integration">AI Integration Services</SelectItem>
+                        <SelectItem value="enterprise-ai">Enterprise AI Solutions</SelectItem>
+                        <SelectItem value="gen-ai-apps">Generative AI Applications</SelectItem>
+                        <SelectItem value="ai-chatbots">AI-Powered Chatbots</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
