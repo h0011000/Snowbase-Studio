@@ -153,9 +153,13 @@ export default function Contact() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="ai-consulting">AI Consulting</SelectItem>
-                        <SelectItem value="custom-development">Custom Development</SelectItem>
-                        <SelectItem value="data-analytics">Data Analytics</SelectItem>
+                        <SelectItem value="ai-consulting">AI Strategy & Consulting</SelectItem>
+                        <SelectItem value="custom-development">Custom AI Model Development</SelectItem>
+                        <SelectItem value="data-analytics">Advanced Data Analytics</SelectItem>
+                        <SelectItem value="nlp-solutions">Natural Language Processing (NLP)</SelectItem>
+                        <SelectItem value="computer-vision">Computer Vision</SelectItem>
+                        <SelectItem value="automation">AI-Powered Automation</SelectItem>
+                        <SelectItem value="integration">AI Integration Services</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

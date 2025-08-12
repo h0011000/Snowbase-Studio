@@ -5,12 +5,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import Logo from "../logo";
 
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
   { href: "#team", label: "Expertise" },
   { href: "#contact", label: "Contact" },
 ];
@@ -52,7 +50,9 @@ export default function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <Link href="#home" className="flex items-center gap-2">
-          <Logo />
+          <span className="text-lg font-semibold text-foreground">
+            SnowBase Studio
+          </span>
         </Link>
         <NavLinks className="hidden items-center gap-6 md:flex" />
         <div className="flex items-center gap-4">
@@ -66,12 +66,11 @@ export default function Header() {
             <SheetContent side="right">
               <div className="flex flex-col gap-8 pt-8">
                 <Link href="#home" className="flex items-center gap-2">
-                  <Logo />
+                  <span className="text-lg font-semibold text-foreground">
+                    SnowBase Studio
+                  </span>
                 </Link>
                 <NavLinks className="flex flex-col items-start gap-6" />
-                <Button asChild>
-                  <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>

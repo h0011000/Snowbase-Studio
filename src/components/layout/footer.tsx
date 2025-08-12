@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
-import Logo from "../logo";
 import { Button } from "../ui/button";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border/40 bg-background/95">
       <div className="container flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-        <Logo />
+        <p className="text-lg font-semibold text-foreground">
+          SnowBase Studio
+        </p>
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} SnowBase Studio. All rights reserved.
         </p>
