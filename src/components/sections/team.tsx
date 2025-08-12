@@ -1,18 +1,27 @@
 import { Badge } from "@/components/ui/badge";
+import {
+  SiPython,
+  SiTensorflow,
+  SiPytorch,
+  SiPandas,
+  SiAmazonaws,
+  SiGooglecloud,
+  SiMicrosoftazure,
+  SiDocker,
+  SiSqlite,
+} from "@icons-pack/react-simple-icons";
+import React from "react";
 
 const technologies = [
-  "Python",
-  "TensorFlow",
-  "PyTorch",
-  "Scikit-learn",
-  "Pandas",
-  "AWS",
-  "Google Cloud",
-  "Azure",
-  "Docker",
-  "Kubernetes",
-  "SQL",
-  "NoSQL",
+  { name: "Python", icon: <SiPython size={18} /> },
+  { name: "TensorFlow", icon: <SiTensorflow size={18} /> },
+  { name: "PyTorch", icon: <SiPytorch size={18} /> },
+  { name: "Pandas", icon: <SiPandas size={18} /> },
+  { name: "AWS", icon: <SiAmazonaws size={18} /> },
+  { name: "Google Cloud", icon: <SiGooglecloud size={18} /> },
+  { name: "Azure", icon: <SiMicrosoftazure size={18} /> },
+  { name: "Docker", icon: <SiDocker size={18} /> },
+  { name: "SQL", icon: <SiSqlite size={18} /> },
 ];
 
 export default function Team() {
@@ -26,10 +35,11 @@ export default function Team() {
           <p className="mt-4 text-lg text-muted-foreground">
             Our team comprises seasoned experts with decades of combined experience in AI and software engineering. We leverage cutting-edge technologies to build robust, scalable, and innovative solutions.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             {technologies.map((tech) => (
-              <Badge key={tech} variant="default" className="text-sm">
-                {tech}
+              <Badge key={tech.name} variant="default" className="flex items-center gap-2 text-sm px-3 py-1.5">
+                {tech.icon}
+                <span>{tech.name}</span>
               </Badge>
             ))}
           </div>
