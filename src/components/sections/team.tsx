@@ -6,7 +6,6 @@ import {
   SiPandas,
   SiAmazon,
   SiGooglecloud,
-  SiMicrosoftazure,
   SiDocker,
   SiSqlite,
 } from "@icons-pack/react-simple-icons";
@@ -19,7 +18,6 @@ const technologies = [
   { name: "Pandas", icon: <SiPandas size={18} /> },
   { name: "AWS", icon: <SiAmazon size={18} /> },
   { name: "Google Cloud", icon: <SiGooglecloud size={18} /> },
-  { name: "Azure", icon: <SiMicrosoftazure size={18} /> },
   { name: "Docker", icon: <SiDocker size={18} /> },
   { name: "SQL", icon: <SiSqlite size={18} /> },
 ];
