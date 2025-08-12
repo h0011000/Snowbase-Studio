@@ -56,9 +56,6 @@ export default function Header() {
         </Link>
         <NavLinks className="hidden items-center gap-6 md:flex" />
         <div className="flex items-center gap-4">
-          <Button asChild className="hidden md:flex">
-            <Link href="#contact">Contact Us</Link>
-          </Button>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
