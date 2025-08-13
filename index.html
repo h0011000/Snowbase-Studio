@@ -16,6 +16,12 @@
       if (window.lucide && window.lucide.createIcons) {
         lucide.createIcons();
       }
+      // Re-initialize icons after a short delay to ensure they load
+      setTimeout(() => {
+        if (window.lucide && window.lucide.createIcons) {
+          lucide.createIcons();
+        }
+      }, 1000);
     });
   </script>
   <style>
@@ -171,7 +177,7 @@
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Core Services</h2>
           <p class="mt-4 text-lg text-muted-foreground">We provide a comprehensive suite of AI services to transform your business.</p>
         </div>
-        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- Card 1 -->
           <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
             <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
@@ -196,14 +202,7 @@
             <h3 class="mt-4 text-lg font-semibold">Custom AI Development</h3>
             <p class="mt-2 text-sm text-muted-foreground">From natural language processing to computer vision, we build bespoke AI applications tailored to your unique operational needs and challenges.</p>
           </div>
-          <!-- Card 4 -->
-          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
-              <i data-lucide="line-chart" class="h-8 w-8 text-primary"></i>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold">Data Analytics</h3>
-            <p class="mt-2 text-sm text-muted-foreground">Transform your raw data into actionable intelligence. We provide advanced analytics services that reveal trends and inform strategic decisions.</p>
-          </div>
+
         </div>
       </div>
     </section>
