@@ -82,7 +82,8 @@
     .snowflake { animation: snowfall var(--dur, 12s) linear infinite; font-size: var(--size, 12px); left: var(--left, 50%); animation-delay: var(--delay, 0s); }
   </style>
 </head>
-<body class="bg-background text-foreground">
+<body class="min-h-screen bg-background text-foreground">
+  <canvas id="snow" aria-hidden="true"></canvas>
   <!-- Global falling snowflakes (visible site-wide) -->
   <div class="snowflakes" aria-hidden="true">
     <span class="snowflake" style="--left:3%; --size:12px; --dur:16s; --delay:-2s">❄</span>
@@ -245,4 +246,124 @@
         </div>
       </div>
     </section>
+  <script>
+    // Snowflake animation - optimized for performance
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('snow');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      let animationId;
+      
+      // Resize handler with debounce
+      let resizeTimeout;
+      const handleResize = () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }, 100);
+      };
+      
+      // Initial setup
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      window.addEventListener('resize', handleResize);
+      
+      // Snowflake class
+      class Snowflake {
+        constructor() {
+          this.reset();
+          this.y = Math.random() * canvas.height; // Start at random y position
+        }
+        
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * -100; // Start above the viewport
+          this.r = 1 + Math.random() * 2; // Smaller size range
+          this.speed = 0.5 + Math.random() * 1.5; // Slower speed
+          this.wind = (Math.random() - 0.5) * 0.5; // Less horizontal movement
+          this.opacity = 0.3 + Math.random() * 0.7; // More subtle opacity
+        }
+        
+        update() {
+          this.x += this.wind;
+          this.y += this.speed;
+          
+          // Reset if out of bounds
+          if (this.y > canvas.height + 10 || 
+              this.x < -10 || 
+              this.x > canvas.width + 10) {
+            this.reset();
+            this.y = -10;
+          }
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+          ctx.fill();
+        }
+      }
+      
+      // Create snowflakes
+      const flakes = Array.from({ length: 80 }, () => new Snowflake());
+      
+      // Animation loop
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        flakes.forEach(flake => {
+          flake.update();
+          flake.draw();
+        });
+        animationId = requestAnimationFrame(animate);
+      };
+      
+      // Start animation with a small delay
+      const startAnimation = () => {
+        setTimeout(() => {
+          animationId = requestAnimationFrame(animate);
+        }, 500);
+      };
+      
+      // Handle page visibility changes
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          startAnimation();
+        } else {
+          cancelAnimationFrame(animationId);
+        }
+      });
+      
+      // Start the animation
+      startAnimation();
+      
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        document.removeEventListener('visibilitychange', startAnimation);
+        cancelAnimationFrame(animationId);
+      };
+    });
+  </script>
+  <style>
+    canvas#snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.8;
+    }
+    
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      canvas#snow {
+        display: none;
+      }
+    }
+  </style>
 </html>
