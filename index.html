@@ -122,19 +122,34 @@
       z-index: 1;
     }
     
+    .bento-card {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+    
     .bento-card img {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 4.5rem;
       width: auto;
       margin-bottom: 1rem;
-      filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
       opacity: 0.9;
+      transform: translateZ(0);
+      will-change: transform, filter;
     }
     
     .bento-card:hover img {
-      transform: scale(1.15);
+      transform: translateZ(20px) scale(1.15) rotateY(5deg) rotateX(5deg);
       opacity: 1;
-      filter: brightness(0) invert(1) drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2)) brightness(1.1) saturate(1.1);
+    }
+    
+    .bento-card .bento-content {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .bento-card:hover .bento-content {
+      transform: translateY(-5px);
     }
     
     .bento-card h3 {
@@ -302,59 +317,70 @@
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Technology Stack</h2>
           <p class="mt-4 text-lg text-muted-foreground">We work with industry-leading technologies to deliver cutting-edge solutions.</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
-          <!-- Python -->
+        <div class="grid grid-cols-5 gap-6 max-w-5xl mx-auto">
+          <!-- Row 1 -->
           <div class="bento-card group">
             <div class="bento-content">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
               <h3>Python</h3>
             </div>
           </div>
-          <!-- TensorFlow -->
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
-              <h3>TensorFlow</h3>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+              <h3>SQL</h3>
             </div>
           </div>
-          <!-- PyTorch -->
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" loading="lazy">
-              <h3>PyTorch</h3>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" loading="lazy">
+              <h3>React</h3>
             </div>
           </div>
-          <!-- Pandas -->
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
-              <h3>Pandas</h3>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" loading="lazy">
+              <h3>Tailwind</h3>
             </div>
           </div>
-          <!-- Docker -->
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" loading="lazy">
-              <h3>Docker</h3>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" loading="lazy">
+              <h3>TypeScript</h3>
             </div>
           </div>
-          <!-- SQL -->
+          
+          <!-- Row 2 -->
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
-              <h3>MySQL</h3>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+              <h3>JavaScript</h3>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team / Expertise -->
-    <section id="team" class="w-full bg-background py-20 md:py-28">
-      <div class="container mx-auto px-4">
-        <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Expertise</h2>
-          <p class="mt-4 text-lg text-muted-foreground">Our team comprises seasoned experts with decades of combined experience in AI and software engineering. We leverage cutting-edge technologies to build robust, scalable, and innovative solutions.</p>
+          <div class="bento-card group">
+            <div class="bento-content">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+              <h3>HTML</h3>
+            </div>
+          </div>
+          <div class="bento-card group">
+            <div class="bento-content">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" loading="lazy">
+              <h3>GitHub</h3>
+            </div>
+          </div>
+          <div class="bento-card group">
+            <div class="bento-content">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" loading="lazy">
+              <h3>Node.js</h3>
+            </div>
+          </div>
+          <div class="bento-card group">
+            <div class="bento-content">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+              <h3>CSS3</h3>
+            </div>
+          </div>
         </div>
       </div>
     </section>
