@@ -35,7 +35,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="w-full py-20 md:py-28 bg-background">
+    <section id="services" className="w-full py-20 md:py-28 bg-secondary/50">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -47,8 +47,12 @@ export default function Services() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <Card key={service.title} className="flex flex-col items-center text-center p-6 shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+          {services.map((service, index) => (
+            <Card
+              key={service.title}
+              className="flex flex-col items-center text-center p-6 border border-transparent transition-all duration-300 hover:border-primary hover:bg-background"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <CardHeader className="items-center">
                 <div className="rounded-full bg-primary/10 p-4">
                   {service.icon}
