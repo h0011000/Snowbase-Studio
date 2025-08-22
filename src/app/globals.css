@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply h-full scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground h-full antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  #__next {
+    @apply flex flex-col min-h-full;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold leading-tight tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  p {
+    @apply leading-relaxed text-lg text-muted-foreground;
+  }
+  
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full;
+  }
+  
+  section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 223 30% 9%;
+    --foreground: 216 40% 95%;
+    --card: 223 30% 14%;
+    --card-foreground: 216 40% 95%;
+    --popover: 223 30% 14%;
+    --popover-foreground: 216 40% 95%;
+    --primary: 216 47% 80%;
+    --primary-foreground: 223 52% 10%;
+    --secondary: 223 30% 20%;
+    --secondary-foreground: 216 40% 95%;
+    --muted: 223 30% 20%;
+    --muted-foreground: 216 40% 70%;
+    --accent: 174 51% 50%;
+    --accent-foreground: 223 30% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 223 30% 25%;
+    --input: 223 30% 25%;
+    --ring: 174 51% 50%;
+    --radius: 0.5rem;
+    
+    /* Custom spacing scale */
+    --space-xxs: 0.25rem;   /* 4px */
+    --space-xs: 0.5rem;     /* 8px */
+    --space-sm: 0.75rem;    /* 12px */
+    --space-md: 1rem;       /* 16px */
+    --space-lg: 1.5rem;     /* 24px */
+    --space-xl: 2rem;       /* 32px */
+    --space-2xl: 3rem;      /* 48px */
+    --space-3xl: 4rem;      /* 64px */
+    --space-4xl: 6rem;      /* 96px */
+    
+    /* Container widths */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1536px;
+  }
+
+  .dark {
+    --background: 223 30% 9%;
+    --foreground: 216 40% 95%;
+    --card: 223 30% 14%;
+    --card-foreground: 216 40% 95%;
+    --popover: 223 30% 14%;
+    --popover-foreground: 216 40% 95%;
+    --primary: 216 47% 80%;
+    --primary-foreground: 223 52% 10%;
+    --secondary: 223 30% 20%;
+    --secondary-foreground: 216 40% 95%;
+    --muted: 223 30% 20%;
+    --muted-foreground: 216 40% 70%;
+    --accent: 174 51% 50%;
+    --accent-foreground: 223 30% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 223 30% 25%;
+    --input: 223 30% 25%;
+    --ring: 174 51% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-in-out;
+  }
+
+  .animate-card-fade-in-up {
+    animation: fade-in-up 0.8s ease-in-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
