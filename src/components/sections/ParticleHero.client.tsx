@@ -182,6 +182,6 @@ export default function ParticleHero() {
           AI Powered Solutions for the Modern Web
         </p>
       </div>
-    </div>
+    </section>
   )
 }

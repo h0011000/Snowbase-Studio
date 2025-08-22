@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* This file uses Tailwind CSS directives which are valid but may show as warnings in some IDEs */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
