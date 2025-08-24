@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from 'react'
 export default function ParticleHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mousePositionRef = useRef({ x: 0, y: 0 })
-  const animationFrameRef = useRef<number | null>(null); // Declare animationFrameRef
+  const animationFrameRef = useRef<number | null>(null);
   const isTouchingRef = useRef(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -29,7 +29,7 @@ export default function ParticleHero() {
       size: number
       life: number
       glitterPhase: number
-      color: string; // Added color property to the type
+      color: string;
     }[] = []
     
     let textImageData: ImageData | null = null
@@ -52,7 +52,7 @@ export default function ParticleHero() {
     }
 
     function createParticle() {
-      if (!ctx || !canvas || !textImageData) return; // Ensure all dependencies are met
+      if (!ctx || !canvas || !textImageData) return;
       const data = textImageData.data;
       const particlesArray: {
         x: number;
@@ -62,8 +62,8 @@ export default function ParticleHero() {
         size: number;
         life: number;
         glitterPhase: number;
-        color: string; // Added color property
-      }[] = []; // Initialize an array to hold particles
+        color: string;
+      }[] = [];
 
       for (let attempt = 0; attempt < 100; attempt++) {
         const x = Math.floor(Math.random() * canvas.width);
@@ -77,27 +77,21 @@ export default function ParticleHero() {
             y: y,
             baseX: x,
             baseY: y,
-            size: Math.random() * 3 + 1, // Random size between 1 and 4
-            life: Math.random() * 100, // Placeholder for life
-            glitterPhase: Math.random() * Math.PI * 2, // Placeholder for glitter
-            color: `hsl(${Math.random() * 360}, 100%, 50%)` // Random color
+            size: Math.random() * 3 + 1,
+            life: Math.random() * 100,
+            glitterPhase: Math.random() * Math.PI * 2,
+            color: `hsl(${Math.random() * 360}, 100%, 50%)`
           };
           particlesArray.push(particle);
-          if (particlesArray.length >= 500) break; // Limit the number of particles
+          if (particlesArray.length >= 500) break;
         }
       }
-      // Assign the created particles to the outer scope 'particles' variable
       particles = particlesArray;
     }
 
-    // Define createInitialParticles function
     function createInitialParticles() {
-      createTextImage(); // Ensure textImageData is populated
-      // Call createParticle to populate the particles array
-      createParticle(); 
-      // If createParticle populates 'particles' directly, this might be enough.
-      // If createParticle returns an array, we'd do: particles = createParticle();
-      // Based on the corrected createParticle, it modifies the outer 'particles' variable.
+      createTextImage();
+      createParticle();
     }
 
     createInitialParticles()
@@ -105,7 +99,7 @@ export default function ParticleHero() {
     function animate() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = '#0A0A1A' // Dark blue background
+      ctx.fillStyle = '#0A0A1A'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       for (let i = 0; i < particles.length; i++) {
@@ -116,8 +110,8 @@ export default function ParticleHero() {
         p.y += (p.baseY - p.y) * 0.01
 
         // Handle mouse interaction
-        const dx = mousePositionRef.current.x - p.x // Corrected mousePosition usage
-        const dy = mousePositionRef.current.y - p.y // Corrected mousePosition usage
+        const dx = mousePositionRef.current.x - p.x
+        const dy = mousePositionRef.current.y - p.y
         const distance = Math.sqrt(dx * dx + dy * dy)
         if (distance < 150) {
           const force = (150 - distance) / 150
@@ -129,23 +123,20 @@ export default function ParticleHero() {
         // Draw particle
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = p.color // This should now be valid
+        ctx.fillStyle = p.color
         ctx.fill()
       }
 
       animationFrameRef.current = requestAnimationFrame(animate)
     }
 
-    // Removed the duplicate handleMouseMove and handleTouchMove definitions from here
-    // as they are defined below.
-
     function handleMouseMove(e: MouseEvent) {
-      mousePositionRef.current = { x: e.clientX, y: e.clientY } // Corrected mousePosition usage
+      mousePositionRef.current = { x: e.clientX, y: e.clientY }
     }
 
     function handleTouchMove(e: TouchEvent) {
       if (e.touches.length > 0) {
-        mousePositionRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; // Corrected mousePosition usage
+        mousePositionRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     }
 
@@ -155,6 +146,7 @@ export default function ParticleHero() {
     // Add event listeners
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
+    window.addEventListener('resize', updateCanvasSize)
 
     // Cleanup
     return () => {
@@ -163,11 +155,15 @@ export default function ParticleHero() {
       }
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('resize', updateCanvasSize)
     }
   }, [])
 
   return (
-    <section className="relative w-full h-screen bg-background overflow-hidden">
+    <section 
+      className="relative w-full h-screen bg-background overflow-hidden"
+      aria-label="Hero section with interactive particle animation"
+    >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"

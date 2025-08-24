@@ -9,6 +9,7 @@ export default function Hero() {
     <section
       id="home"
       className="relative w-full h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary overflow-hidden"
+      aria-label="Hero section"
     >
       <ParticleHero />
       <div className="container px-4 md:px-6">
