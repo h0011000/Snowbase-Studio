@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
     ],
   },
   devIndicators: false,
+  // Add trailing slash to all URLs
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -5,6 +5,7 @@ import Team from "@/components/sections/team";
 import Contact from "@/components/sections/contact";
 import Footer from "@/components/layout/footer";
 import SkipToContent from "@/components/ui/skip-to-content";
+import Script from "next/script";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,18 +39,42 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <SkipToContent />
-      <Header />
-      <main id="main-content" className="flex-1 focus:outline-none">
-        <ParticleHero />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Services />
-          <Team />
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SnowBase Studio",
+            "url": "https://snowbasestudio.com",
+            "logo": "https://snowbasestudio.com/logo.png",
+            "sameAs": [
+              "https://www.linkedin.com/company/snowbasestudio",
+              "https://github.com/snowbasestudio"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "hi@snowbasestudio.com",
+              "contactType": "customer service"
+            }
+          })
+        }}
+      />
+      <div className="flex min-h-screen flex-col bg-background">
+        <SkipToContent />
+        <Header />
+        <main id="main-content" className="flex-1 focus:outline-none">
+          <ParticleHero />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <Services />
+            <Team />
+            <Contact />
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
