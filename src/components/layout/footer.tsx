@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" asChild className="rounded-full hover:bg-primary/10 transition-colors">
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/as000010000/Hi-man" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="Visit our GitHub profile"

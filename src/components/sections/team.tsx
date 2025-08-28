@@ -1,29 +1,29 @@
 import { Badge } from "@/components/ui/badge";
 import {
   SiPython,
-  SiTensorflow,
-  SiPytorch,
-  SiPandas,
-  SiAmazon,
-  SiGooglecloud,
-  SiDocker,
   SiSqlite,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiGithub,
+  SiNodedotjs,
+  SiCss3,
 } from "@icons-pack/react-simple-icons";
 import React from "react";
 
 const technologies = [
   { name: "Python", icon: <SiPython size={24} aria-hidden="true" /> },
-  { name: "TensorFlow", icon: <SiTensorflow size={24} aria-hidden="true" /> },
-  { name: "PyTorch", icon: <SiPytorch size={24} aria-hidden="true" /> },
-  { name: "Pandas", icon: <SiPandas size={24} aria-hidden="true" /> },
-  { name: "AWS", icon: <SiAmazon size={24} aria-hidden="true" /> },
-  { name: "Google Cloud", icon: <SiGooglecloud size={24} aria-hidden="true" /> },
-  { name: "Docker", icon: <SiDocker size={24} aria-hidden="true" /> },
   { name: "SQL", icon: <SiSqlite size={24} aria-hidden="true" /> },
-  { name: "Kubernetes", icon: <SiPython size={24} aria-hidden="true" /> },
-  { name: "React", icon: <SiPython size={24} aria-hidden="true" /> },
-  { name: "Node.js", icon: <SiPython size={24} aria-hidden="true" /> },
-  { name: "MongoDB", icon: <SiPython size={24} aria-hidden="true" /> },
+  { name: "React", icon: <SiReact size={24} aria-hidden="true" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={24} aria-hidden="true" /> },
+  { name: "TypeScript", icon: <SiTypescript size={24} aria-hidden="true" /> },
+  { name: "JavaScript", icon: <SiJavascript size={24} aria-hidden="true" /> },
+  { name: "HTML5", icon: <SiHtml5 size={24} aria-hidden="true" /> },
+  { name: "GitHub", icon: <SiGithub size={24} aria-hidden="true" /> },
+  { name: "Node.js", icon: <SiNodedotjs size={24} aria-hidden="true" /> },
+  { name: "CSS3", icon: <SiCss3 size={24} aria-hidden="true" /> },
 ];
 
 export default function Team() {
