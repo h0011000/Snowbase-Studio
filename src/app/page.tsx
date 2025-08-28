@@ -67,6 +67,11 @@ export default function Home() {
         <Header />
         <main id="main-content" className="flex-1 focus:outline-none">
           <ParticleHero />
+          {/* Decorative elements */}
+          <div className="fixed top-1/4 left-8 w-3 h-3 rounded-full bg-primary/20 animate-pulse-slow hidden lg:block"></div>
+          <div className="fixed bottom-1/3 right-8 w-4 h-4 rounded-full bg-accent/20 animate-pulse-slow animation-delay-1000 hidden lg:block"></div>
+          <div className="fixed top-1/2 left-1/4 w-2 h-2 rounded-full bg-primary/30 animate-pulse-slow animation-delay-2000 hidden lg:block"></div>
+          
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Services />
             <Team />

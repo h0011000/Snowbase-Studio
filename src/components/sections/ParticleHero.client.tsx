@@ -5,7 +5,6 @@ export default function ParticleHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mousePositionRef = useRef({ x: 0, y: 0 })
   const animationFrameRef = useRef<number | null>(null);
-  const isTouchingRef = useRef(false)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -27,9 +26,11 @@ export default function ParticleHero() {
       baseX: number
       baseY: number
       size: number
+      speed: number
       life: number
       glitterPhase: number
       color: string;
+      opacity: number;
     }[] = []
     
     let textImageData: ImageData | null = null
@@ -39,7 +40,7 @@ export default function ParticleHero() {
       ctx.fillStyle = 'white'
       ctx.save()
       const fontSize = isMobile ? 60 : 120
-      ctx.font = `bold ${fontSize}px Arial, sans-serif`
+      ctx.font = `bold ${fontSize}px 'Poppins', Arial, sans-serif`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       const text = 'Snowbase Studio'
@@ -60,9 +61,11 @@ export default function ParticleHero() {
         baseX: number;
         baseY: number;
         size: number;
+        speed: number;
         life: number;
         glitterPhase: number;
         color: string;
+        opacity: number;
       }[] = [];
 
       for (let attempt = 0; attempt < 100; attempt++) {
@@ -78,9 +81,11 @@ export default function ParticleHero() {
             baseX: x,
             baseY: y,
             size: Math.random() * 3 + 1,
+            speed: Math.random() * 0.05 + 0.01,
             life: Math.random() * 100,
             glitterPhase: Math.random() * Math.PI * 2,
-            color: `hsl(${Math.random() * 360}, 100%, 50%)`
+            color: `hsl(${216 + Math.random() * 40}, ${70 + Math.random() * 30}%, ${60 + Math.random() * 20}%)`,
+            opacity: Math.random() * 0.5 + 0.5
           };
           particlesArray.push(particle);
           if (particlesArray.length >= 500) break;
@@ -99,15 +104,20 @@ export default function ParticleHero() {
     function animate() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = '#0A0A1A'
+      
+      // Draw gradient background
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#0A0A1A');
+      gradient.addColorStop(1, '#1a1a2e');
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
 
-        // Update particle position
-        p.x += (p.baseX - p.x) * 0.01
-        p.y += (p.baseY - p.y) * 0.01
+        // Update particle position with easing
+        p.x += (p.baseX - p.x) * p.speed
+        p.y += (p.baseY - p.y) * p.speed
 
         // Handle mouse interaction
         const dx = mousePositionRef.current.x - p.x
@@ -120,11 +130,26 @@ export default function ParticleHero() {
           p.y -= Math.sin(angle) * force * 2
         }
 
-        // Draw particle
+        // Add subtle movement to particles
+        p.glitterPhase += 0.05
+        const glitter = Math.sin(p.glitterPhase) * 0.5 + 0.5
+        
+        // Draw particle with glow effect
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = p.color
+        
+        // Create glow effect
+        const gradient = ctx.createRadialGradient(
+          p.x, p.y, 0,
+          p.x, p.y, p.size * 3
+        );
+        gradient.addColorStop(0, p.color);
+        gradient.addColorStop(1, 'rgba(34, 193, 195, 0)');
+        
+        ctx.fillStyle = gradient
+        ctx.globalAlpha = p.opacity * glitter
         ctx.fill()
+        ctx.globalAlpha = 1
       }
 
       animationFrameRef.current = requestAnimationFrame(animate)
@@ -171,13 +196,34 @@ export default function ParticleHero() {
         aria-hidden="true"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
-          Snowbase Studio
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 animate-float">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            Snowbase Studio
+          </span>
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-in-up">
           AI Powered Solutions for the Modern Web
         </p>
+        <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-300">
+          <a 
+            href="#contact" 
+            className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-lg shadow-primary/20"
+          >
+            Get Started
+          </a>
+          <a 
+            href="#services" 
+            className="px-8 py-3 bg-transparent border-2 border-primary text-primary rounded-full font-medium hover:bg-primary/10 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            Our Services
+          </a>
+        </div>
       </div>
+      
+      {/* Floating elements for additional visual interest */}
+      <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full bg-primary/30 animate-pulse-slow"></div>
+      <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-accent/30 animate-pulse-slow animation-delay-1000"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-3 h-3 rounded-full bg-primary/20 animate-pulse-slow animation-delay-2000"></div>
     </section>
   )
 }

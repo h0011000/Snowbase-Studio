@@ -3,13 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SnowBase Studio</title>
+  <title>SnowBase Studio | AI Development</title>
   <link rel="icon" href="favicon.ico" />
-  <meta name="description" content="AI-Powered, Human-Driven Solutions by SnowBase Studio" />
+  <meta name="description" content="SnowBase Studio is a premium AI development company creating high-converting solutions." />
+  <meta name="keywords" content="AI development, machine learning, data analytics, AI consulting, SnowBase Studio">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://snowbasestudio.com/">
+  <meta property="og:title" content="SnowBase Studio | AI Development">
+  <meta property="og:description" content="SnowBase Studio is a premium AI development company creating high-converting solutions.">
+  <meta property="og:image" content="https://snowbasestudio.com/preview.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://snowbasestudio.com/">
+  <meta property="twitter:title" content="SnowBase Studio | AI Development">
+  <meta property="twitter:description" content="SnowBase Studio is a premium AI development company creating high-converting solutions.">
+  <meta property="twitter:image" content="https://snowbasestudio.com/preview.jpg">
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
   <script>
     // Initialize Lucide icons when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
@@ -24,13 +41,14 @@
       }, 1000);
     });
   </script>
+  
   <style>
     :root {
-      --background: 223 30% 10%;
+      --background: 223 30% 9%;
       --foreground: 216 40% 95%;
-      --card: 223 30% 15%;
+      --card: 223 30% 14%;
       --card-foreground: 216 40% 95%;
-      --popover: 223 30% 15%;
+      --popover: 223 30% 14%;
       --popover-foreground: 216 40% 95%;
       --primary: 216 47% 80%;
       --primary-foreground: 223 52% 10%;
@@ -58,36 +76,79 @@
     .text-primary-foreground { color: hsl(var(--primary-foreground)); }
     .text-foreground\/80 { color: hsl(var(--foreground) / 0.8); }
     .border-border { border-color: hsl(var(--border)); }
-    .bg-background-95 { background-color: hsl(var(--background) / 0.95); }
-    .bg-background-80 { background-color: hsl(var(--background) / 0.80); }
-    .border-border-40 { border-color: hsl(var(--border) / 0.40); }
-    .bg-primary-10 { background-color: hsl(var(--primary) / 0.10); }
+    .bg-background\/95 { background-color: hsl(var(--background) / 0.95); }
+    .bg-background\/80 { background-color: hsl(var(--background) / 0.80); }
+    .border-border\/40 { border-color: hsl(var(--border) / 0.40); }
+    .bg-primary\/10 { background-color: hsl(var(--primary) / 0.10); }
     .bg-card { background-color: hsl(var(--card)); }
+    .text-accent { color: hsl(var(--accent)); }
 
     html { scroll-behavior: smooth; }
-    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    body { 
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* Simple button styles to replace shadcn/ui Button */
-    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.375rem; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 500; transition: background-color .2s, color .2s, border-color .2s, filter .2s; }
-    .btn-primary { background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
-    .btn-outline { border: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); background-color: transparent; }
-    .btn:hover { filter: brightness(1.05); }
-
-    /* Simple card */
-    .card { border-radius: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06); padding: 1.5rem; background-color: hsl(var(--card)); color: hsl(var(--card-foreground)); }
-
-    /* Bento Cards */
-    .bento-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
-      padding: 1.5rem;
+    /* Enhanced button styles */
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      border-radius: 0.5rem; 
+      padding: 0.75rem 1.5rem; 
+      font-size: 1rem; 
+      font-weight: 600; 
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary { 
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))); 
+      color: hsl(var(--primary-foreground)); 
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .btn-outline { 
+      border: 2px solid hsl(var(--border)); 
+      color: hsl(var(--foreground)); 
+      background-color: transparent; 
+    }
+    .btn-outline:hover { 
+      background-color: hsl(var(--primary) / 0.1);
+      border-color: hsl(var(--primary));
+    }
+
+    /* Enhanced card styles */
+    .card { 
+      border-radius: 1rem; 
+      box-shadow: 0 4px 6px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.06); 
+      padding: 2rem; 
+      background-color: hsl(var(--card)); 
+      color: hsl(var(--card-foreground));
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid hsl(var(--border) / 0.5);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Enhanced bento cards */
+    .bento-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       aspect-ratio: 1/1;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       position: relative;
       overflow: hidden;
     }
@@ -96,15 +157,16 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
+      border-radius: 1.25rem;
     }
     
     .bento-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
     }
     
     .bento-card:hover::before {
@@ -128,36 +190,37 @@
     }
     
     .bento-card img {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      height: 4.5rem;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 5rem;
       width: auto;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-      opacity: 0.9;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      opacity: 0.95;
       transform: translateZ(0);
       will-change: transform, filter;
     }
     
     .bento-card:hover img {
-      transform: translateZ(20px) scale(1.15) rotateY(5deg) rotateX(5deg);
+      transform: translateZ(30px) scale(1.2) rotateY(8deg) rotateX(8deg);
       opacity: 1;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2)) brightness(1.1) saturate(1.1);
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25)) brightness(1.15) saturate(1.2);
     }
     
     .bento-card .bento-content {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .bento-card:hover .bento-content {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
     }
     
     .bento-card h3 {
       color: hsl(var(--foreground));
-      font-weight: 500;
-      font-size: 1rem;
-      margin-top: 0.5rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-top: 0.75rem;
       transition: all 0.3s ease;
+      text-align: center;
     }
     
     .bento-card:hover h3 {
@@ -165,159 +228,237 @@
     }
 
     /* Badge */
-    .badge { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: hsl(var(--secondary)); color: hsl(var(--foreground)); }
+    .badge { 
+      display: inline-flex; 
+      align-items: center; 
+      border-radius: 9999px; 
+      padding: 0.5rem 1rem; 
+      font-size: 0.875rem; 
+      font-weight: 600;
+      background-color: hsl(var(--secondary)); 
+      color: hsl(var(--foreground)); 
+      transition: all 0.3s ease;
+    }
+    .badge:hover {
+      transform: scale(1.05);
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
 
     /* Backdrop blur helper */
-    .backdrop-blur { backdrop-filter: blur(8px); }
+    .backdrop-blur { backdrop-filter: blur(12px); }
 
     /* Hide utility for mobile menu */
     .hidden { display: none; }
 
+    /* Enhanced animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.3; }
+    }
+    
+    @keyframes gradient-x {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .animate-gradient-x {
+      background-size: 200% 200%;
+      animation: gradient-x 3s ease infinite;
+    }
+    
     /* Falling snowflakes */
     .snowflakes { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
-    .snowflake { position: absolute; top: -10%; color: hsl(var(--foreground) / 0.15); opacity: 0.7; will-change: transform; }
+    .snowflake { position: absolute; top: -10%; color: hsl(var(--foreground) / 0.2); opacity: 0.8; will-change: transform; }
     @keyframes snowfall {
       0% { transform: translate3d(var(--x, 0), -10%, 0) rotate(0deg); }
       100% { transform: translate3d(calc(var(--x, 0) + 0px), 110%, 0) rotate(360deg); }
     }
     /* Create variety */
-    .snowflake { animation: snowfall var(--dur, 12s) linear infinite; font-size: var(--size, 12px); left: var(--left, 50%); animation-delay: var(--delay, 0s); }
+    .snowflake { animation: snowfall var(--dur, 15s) linear infinite; font-size: var(--size, 14px); left: var(--left, 50%); animation-delay: var(--delay, 0s); }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Decorative elements */
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, hsl(var(--primary) / 0.2) 0%, transparent 70%);
+      z-index: -1;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-background text-foreground">
+  <!-- Decorative background elements -->
+  <div class="decorative-circle w-64 h-64 -top-32 -left-32"></div>
+  <div class="decorative-circle w-96 h-96 -bottom-48 -right-48"></div>
+  
   <canvas id="snow" aria-hidden="true"></canvas>
   <!-- Global falling snowflakes (visible site-wide) -->
   <div class="snowflakes" aria-hidden="true">
-    <span class="snowflake" style="--left:3%; --size:12px; --dur:16s; --delay:-2s">❄</span>
-    <span class="snowflake" style="--left:8%; --size:9px; --dur:12s; --delay:-6s">❄</span>
-    <span class="snowflake" style="--left:14%; --size:14px; --dur:18s; --delay:-4s">❄</span>
-    <span class="snowflake" style="--left:20%; --size:10px; --dur:15s; --delay:-8s">❄</span>
-    <span class="snowflake" style="--left:27%; --size:11px; --dur:17s; --delay:-3s">❄</span>
-    <span class="snowflake" style="--left:33%; --size:8px; --dur:13s; --delay:-5s">❄</span>
-    <span class="snowflake" style="--left:40%; --size:16px; --dur:20s; --delay:-7s">❄</span>
-    <span class="snowflake" style="--left:47%; --size:9px; --dur:14s; --delay:-1s">❄</span>
-    <span class="snowflake" style="--left:54%; --size:12px; --dur:16s; --delay:-9s">❄</span>
-    <span class="snowflake" style="--left:61%; --size:10px; --dur:15s; --delay:-6s">❄</span>
-    <span class="snowflake" style="--left:69%; --size:13px; --dur:18s; --delay:-2s">❄</span>
-    <span class="snowflake" style="--left:76%; --size:9px; --dur:12s; --delay:-4s">❄</span>
-    <span class="snowflake" style="--left:83%; --size:15px; --dur:19s; --delay:-8s">❄</span>
-    <span class="snowflake" style="--left:90%; --size:11px; --dur:16s; --delay:-5s">❄</span>
-    <span class="snowflake" style="--left:96%; --size:10px; --dur:14s; --delay:-3s">❄</span>
+    <span class="snowflake" style="--left:3%; --size:14px; --dur:18s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:8%; --size:10px; --dur:14s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:14%; --size:16px; --dur:20s; --delay:-4s">❄</span>
+    <span class="snowflake" style="--left:20%; --size:12px; --dur:17s; --delay:-8s">❄</span>
+    <span class="snowflake" style="--left:27%; --size:13px; --dur:19s; --delay:-3s">❄</span>
+    <span class="snowflake" style="--left:33%; --size:9px; --dur:15s; --delay:-5s">❄</span>
+    <span class="snowflake" style="--left:40%; --size:18px; --dur:22s; --delay:-7s">❄</span>
+    <span class="snowflake" style="--left:47%; --size:11px; --dur:16s; --delay:-1s">❄</span>
+    <span class="snowflake" style="--left:54%; --size:14px; --dur:18s; --delay:-9s">❄</span>
+    <span class="snowflake" style="--left:61%; --size:12px; --dur:17s; --delay:-6s">❄</span>
+    <span class="snowflake" style="--left:69%; --size:15px; --dur:20s; --delay:-2s">❄</span>
+    <span class="snowflake" style="--left:76%; --size:10px; --dur:14s; --delay:-4s">❄</span>
+    <span class="snowflake" style="--left:83%; --size:17px; --dur:21s; --delay:-8s">❄</span>
+    <span class="snowflake" style="--left:90%; --size:13px; --dur:18s; --delay:-5s">❄</span>
+    <span class="snowflake" style="--left:96%; --size:12px; --dur:16s; --delay:-3s">❄</span>
   </div>
+  
   <!-- Header -->
-  <header id="site-header" class="sticky top-0 z-50 w-full border-b border-border-40 bg-background-95 backdrop-blur">
+  <header id="site-header" class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
-      <a href="#home" class="flex items-center gap-2">
-        <img src="favicon.ico" alt="SnowBase Studio logo" class="h-6 w-6" />
-        <span class="text-lg font-semibold">SnowBase Studio</span>
+      <a href="#home" class="flex items-center gap-2 group">
+        <img src="favicon.ico" alt="SnowBase Studio logo" class="h-8 w-8 transition-transform group-hover:rotate-12" />
+        <span class="text-xl font-bold">
+          <span class="gradient-text">SnowBase</span><span class="text-foreground">Studio</span>
+        </span>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden gap-6 md:flex">
-        <a href="#home" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Home</a>
-        <a href="#services" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Services</a>
-        
-        <a href="#technology-stack" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Expertise</a>
-        <a href="#contact" class="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">Contact</a>
+      <nav class="hidden gap-8 md:flex">
+        <a href="#home" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Home</a>
+        <a href="#services" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Services</a>
+        <a href="#technology-stack" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Expertise</a>
+        <a href="#contact" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Contact</a>
       </nav>
 
       <div class="flex items-center gap-3">
         <!-- Mobile Menu Button -->
-        <button id="menu-btn" class="md:hidden rounded-md border border-border p-2" aria-label="Toggle navigation">
-          <i data-lucide="menu" class="h-5 w-5"></i>
+        <button id="menu-btn" class="md:hidden rounded-lg border border-border p-2 hover:bg-primary/10 transition-colors" aria-label="Toggle navigation">
+          <i data-lucide="menu" class="h-6 w-6"></i>
         </button>
       </div>
     </div>
     <!-- Mobile Nav -->
     <div id="mobile-menu" class="md:hidden hidden border-t border-border bg-background">
       <div class="container mx-auto flex flex-col gap-4 p-4">
-        <a href="#home" class="text-sm font-medium" data-close-menu>Home</a>
-        <a href="#services" class="text-sm font-medium" data-close-menu>Services</a>
-        
-        <a href="#technology-stack" class="text-sm font-medium" data-close-menu>Expertise</a>
-        <a href="#contact" class="btn btn-primary w-full" data-close-menu>Contact Us</a>
+        <a href="#home" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Home</a>
+        <a href="#services" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Services</a>
+        <a href="#technology-stack" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Expertise</a>
+        <a href="#contact" class="btn btn-primary w-full mt-2" data-close-menu>Contact Us</a>
       </div>
     </div>
   </header>
 
   <main class="relative z-10 flex-1">
     <!-- Hero -->
-    <section id="home" class="relative overflow-hidden w-full bg-gradient-to-br from-background to-secondary py-24 md:py-32 lg:py-40">
+    <section id="home" class="relative overflow-hidden w-full bg-gradient-to-br from-background via-secondary to-background py-28 md:py-36 lg:py-44">
+      
       <div class="relative z-10 container mx-auto px-4 md:px-6">
-        <div class="mx-auto max-w-3xl text-center">
-          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            AI-Powered, Human-Driven Solutions
+        <div class="mx-auto max-w-4xl text-center">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <span class="gradient-text">AI-Powered</span>, Human-Driven Solutions
           </h1>
-          <p class="mt-6 text-lg leading-8 text-muted-foreground">
+          <p class="mt-6 text-lg md:text-xl leading-8 text-muted-foreground max-w-2xl mx-auto">
             We build intelligent systems that amplify human potential, turning your complex challenges into impactful, data-driven outcomes.
           </p>
-          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#contact" class="btn btn-primary text-base">Get Started</a>
+          <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#contact" class="btn btn-primary text-base px-8 py-4">Get Started</a>
+            <a href="#services" class="btn btn-outline text-base px-8 py-4">Our Services</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="w-full bg-background py-20 md:py-28">
+    <section id="services" class="w-full bg-background py-24 md:py-32">
       <div class="container mx-auto px-4">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Core Services</h2>
-          <p class="mt-4 text-lg text-muted-foreground">We provide a comprehensive suite of AI services to transform your business.</p>
+        <div class="mx-auto max-w-3xl text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <span class="gradient-text">Our Core Services</span>
+          </h2>
+          <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+            We provide a comprehensive suite of AI services to transform your business.
+          </p>
         </div>
-        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Card 1 -->
-          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
-              <div class="h-12 w-12 flex items-center justify-center">
+          <div class="card text-center group">
+            <div class="mx-auto rounded-full bg-primary/10 p-5 w-fit transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+              <div class="h-14 w-14 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-8 w-8 text-primary">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-semibold">Machine Learning Solutions</h3>
-            <p class="mt-2 text-sm text-muted-foreground">We develop and deploy predictive models that uncover insights, automate processes, and drive business growth with unparalleled accuracy.</p>
+            <h3 class="mt-6 text-xl font-bold group-hover:text-primary transition-colors">Machine Learning Solutions</h3>
+            <p class="mt-4 text-base text-muted-foreground">We develop and deploy predictive models that uncover insights, automate processes, and drive business growth with unparalleled accuracy.</p>
           </div>
+          
           <!-- Card 2 -->
-          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
-              <div class="h-12 w-12 flex items-center justify-center">
+          <div class="card text-center group">
+            <div class="mx-auto rounded-full bg-primary/10 p-5 w-fit transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+              <div class="h-14 w-14 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-8 w-8 text-primary">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.082.775-2.013 1.847-2.2.35-.033.7-.05 1.05-.072m5.803 0c-.35.022-.7.039-1.05.072A2.25 2.25 0 008.25 6.24v.75" />
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-semibold">AI Consulting</h3>
-            <p class="mt-2 text-sm text-muted-foreground">Our experts help you navigate the AI landscape, crafting a strategic roadmap to integrate artificial intelligence into your core business strategy.</p>
+            <h3 class="mt-6 text-xl font-bold group-hover:text-primary transition-colors">AI Consulting</h3>
+            <p class="mt-4 text-base text-muted-foreground">Our experts help you navigate the AI landscape, crafting a strategic roadmap to integrate artificial intelligence into your core business strategy.</p>
           </div>
+          
           <!-- Card 3 -->
-          <div class="card text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="mx-auto rounded-full bg-primary-10 p-4 w-fit">
-              <div class="h-12 w-12 flex items-center justify-center">
+          <div class="card text-center group">
+            <div class="mx-auto rounded-full bg-primary/10 p-5 w-fit transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
+              <div class="h-14 w-14 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-8 w-8 text-primary">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
                 </svg>
               </div>
             </div>
-            <h3 class="mt-4 text-lg font-semibold">Custom AI Development</h3>
-            <p class="mt-2 text-sm text-muted-foreground">From natural language processing to computer vision, we build bespoke AI applications tailored to your unique operational needs and challenges.</p>
+            <h3 class="mt-6 text-xl font-bold group-hover:text-primary transition-colors">Custom AI Development</h3>
+            <p class="mt-4 text-base text-muted-foreground">From natural language processing to computer vision, we build bespoke AI applications tailored to your unique operational needs and challenges.</p>
           </div>
-
+          
+          
         </div>
       </div>
     </section>
 
-    
-
     <!-- Technology Stack Bento Grid -->
-    <section id="technology-stack" class="w-full bg-secondary py-16">
+    <section id="technology-stack" class="w-full bg-gradient-to-br from-secondary to-background py-24">
       <div class="container mx-auto px-4">
-        <div class="mx-auto max-w-3xl text-center mb-12">
-          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Our Technology Stack</h2>
-          <p class="mt-4 text-lg text-muted-foreground">We work with industry-leading technologies to deliver cutting-edge solutions.</p>
+        <div class="mx-auto max-w-4xl text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <span class="gradient-text">Our Technology Stack</span>
+          </h2>
+          <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+            We work with industry-leading technologies to deliver cutting-edge solutions.
+          </p>
         </div>
-        <div class="grid grid-cols-5 gap-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
           <!-- Row 1 -->
           <div class="bento-card group">
             <div class="bento-content">
@@ -327,7 +468,7 @@
           </div>
           <div class="bento-card group">
             <div class="bento-content">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="SQL" loading="lazy">
               <h3>SQL</h3>
             </div>
           </div>
@@ -340,7 +481,7 @@
           <div class="bento-card group">
             <div class="bento-content">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" loading="lazy">
-              <h3>Tailwind</h3>
+              <h3>Tailwind CSS</h3>
             </div>
           </div>
           <div class="bento-card group">
@@ -360,7 +501,7 @@
           <div class="bento-card group">
             <div class="bento-content">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
-              <h3>HTML</h3>
+              <h3>HTML5</h3>
             </div>
           </div>
           <div class="bento-card group">
@@ -382,25 +523,50 @@
             </div>
           </div>
         </div>
+        
+        
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="w-full bg-background py-20 md:py-28">
+    <section id="contact" class="w-full bg-background py-24 md:py-32">
       <div class="container mx-auto px-4">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Contact Us</h2>
-          <p class="mt-4 text-lg text-muted-foreground">Have a project in mind? Let's talk about how we can help you.</p>
+        <div class="mx-auto max-w-3xl text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <span class="gradient-text">Contact Us</span>
+          </h2>
+          <p class="text-lg text-muted-foreground">
+            Have a project in mind? Let's talk about how we can help you transform your ideas into reality.
+          </p>
         </div>
         <div class="mt-16 flex justify-center">
-          <div class="space-y-6 text-center max-w-xl">
+          <div class="space-y-8 text-center max-w-2xl">
             <h3 class="text-2xl font-bold">Get in Touch</h3>
-            <div class="space-y-4">
-              <div class="flex flex-col items-center gap-3">
-                <i data-lucide="mail" class="h-8 w-8 text-primary"></i>
+            <p class="text-muted-foreground text-lg">
+              Ready to start your next AI project? Reach out to us and let's discuss how we can help you achieve your goals.
+            </p>
+            
+            <div class="space-y-6 mt-10">
+              <div class="flex flex-col items-center gap-4 group">
+                <div class="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <i data-lucide="mail" class="h-8 w-8 text-primary"></i>
+                </div>
                 <div>
-                  <h4 class="text-xl font-semibold">Email</h4>
-                  <a href="mailto:hi@snowbasestudio.com" class="text-xl text-muted-foreground hover:text-primary">hi@snowbasestudio.com</a>
+                  <h4 class="text-xl font-semibold mb-2">Email</h4>
+                  <a href="mailto:hi@snowbasestudio.com" class="text-xl text-muted-foreground hover:text-primary transition-colors">hi@snowbasestudio.com</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Visual element -->
+            <div class="relative h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-border/30 mt-12">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center p-8">
+                  <div class="text-6xl mb-6">🚀</div>
+                  <h4 class="text-2xl font-bold mb-4">Start Your Project</h4>
+                  <p class="text-muted-foreground text-lg">
+                    Let's build something amazing together
+                  </p>
                 </div>
               </div>
             </div>
@@ -408,6 +574,10 @@
         </div>
       </div>
     </section>
+  </main>
+  
+  
+  
   <script>
     // Snowflake animation - optimized for performance
     document.addEventListener('DOMContentLoaded', () => {
@@ -442,15 +612,18 @@
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * -100; // Start above the viewport
-          this.r = 1 + Math.random() * 2; // Smaller size range
-          this.speed = 0.5 + Math.random() * 1.5; // Slower speed
-          this.wind = (Math.random() - 0.5) * 0.5; // Less horizontal movement
-          this.opacity = 0.3 + Math.random() * 0.7; // More subtle opacity
+          this.r = 1 + Math.random() * 3; // Slightly larger size range
+          this.speed = 0.5 + Math.random() * 2; // Variable speed
+          this.wind = (Math.random() - 0.5) * 1; // More horizontal movement
+          this.opacity = 0.4 + Math.random() * 0.6; // More visible snowflakes
+          this.rotation = Math.random() * Math.PI * 2; // Initial rotation
+          this.rotationSpeed = (Math.random() - 0.5) * 0.1; // Rotation speed
         }
         
         update() {
           this.x += this.wind;
           this.y += this.speed;
+          this.rotation += this.rotationSpeed;
           
           // Reset if out of bounds
           if (this.y > canvas.height + 10 || 
@@ -462,15 +635,30 @@
         }
         
         draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+          ctx.moveTo(0, -this.r);
+          for (let i = 0; i < 6; i++) {
+            ctx.lineTo(
+              Math.cos((i * 60 + 30) * Math.PI / 180) * this.r,
+              Math.sin((i * 60 + 30) * Math.PI / 180) * this.r
+            );
+            ctx.lineTo(
+              Math.cos((i * 60 + 60) * Math.PI / 180) * (this.r * 0.5),
+              Math.sin((i * 60 + 60) * Math.PI / 180) * (this.r * 0.5)
+            );
+          }
+          ctx.closePath();
           ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
           ctx.fill();
+          ctx.restore();
         }
       }
       
       // Create snowflakes
-      const flakes = Array.from({ length: 80 }, () => new Snowflake());
+      const flakes = Array.from({ length: 100 }, () => new Snowflake());
       
       // Animation loop
       const animate = () => {
@@ -508,7 +696,28 @@
         cancelAnimationFrame(animationId);
       };
     });
+    
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking on menu items
+        const menuItems = mobileMenu.querySelectorAll('[data-close-menu]');
+        menuItems.forEach(item => {
+          item.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+    });
   </script>
+  
   <style>
     canvas#snow {
       position: fixed;
@@ -518,7 +727,7 @@
       height: 100%;
       pointer-events: none;
       z-index: 10;
-      opacity: 0.8;
+      opacity: 0.9;
     }
     
     /* Reduce motion preference */
@@ -526,6 +735,21 @@
       canvas#snow {
         display: none;
       }
+      
+      .animate-float,
+      .animate-pulse-slow {
+        animation: none;
+      }
+    }
+    
+    /* Animation delays */
+    .animation-delay-1000 {
+      animation-delay: 1s;
+    }
+    
+    .animation-delay-2000 {
+      animation-delay: 2s;
     }
   </style>
+</body>
 </html>

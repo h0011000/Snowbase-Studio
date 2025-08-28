@@ -33,7 +33,7 @@ export default function Header() {
             <Link
               href={link.href}
               onClick={onItemClick}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1 block"
+              className="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1 block hover:scale-105"
               aria-current={typeof window !== 'undefined' && window.location.hash === link.href ? "page" : undefined}
             >
               {link.label}
@@ -46,20 +46,20 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
         isScrolled
-          ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+          ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-lg"
           : "bg-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
         <Link 
           href="#home" 
-          className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary rounded-md p-1"
+          className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary rounded-md p-1 group"
           aria-label="SnowBase Studio home"
         >
-          <span className="text-lg font-semibold text-foreground">
-            SnowBase Studio
+          <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+            SnowBase<span className="text-primary">Studio</span>
           </span>
         </Link>
         <NavLinks className="hidden md:flex" />
@@ -69,13 +69,13 @@ export default function Header() {
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="md:hidden"
+                className="md:hidden border-primary/30 hover:bg-primary/10 transition-all duration-300"
                 aria-label="Toggle navigation menu"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 text-foreground group-hover:text-primary" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="bg-background border-l border-primary/20">
               <div className="flex flex-col gap-8 pt-8">
                 <Link 
                   href="#home" 
@@ -83,8 +83,8 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="SnowBase Studio home"
                 >
-                  <span className="text-lg font-semibold text-foreground">
-                    SnowBase Studio
+                  <span className="text-xl font-bold text-foreground">
+                    SnowBase<span className="text-primary">Studio</span>
                   </span>
                 </Link>
                 <NavLinks className="flex flex-col" onItemClick={() => setMobileMenuOpen(false)} />
