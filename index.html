@@ -226,6 +226,17 @@
     .bento-card:hover h3 {
       color: hsl(var(--primary));
     }
+    
+    /* Snowflake rotation animation */
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .group:hover img[alt="SnowBase Studio logo"] {
+      animation: rotate 2s linear infinite;
+      transition: transform 0.3s ease-out;
+    }
 
     /* Badge */
     .badge { 
