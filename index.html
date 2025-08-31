@@ -345,12 +345,11 @@
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden gap-8 md:flex">
-        <a href="#home" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Home</a>
-        <a href="#services" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Services</a>
-        <a href="#technology-stack" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Expertise</a>
-        <a href="#contact" class="text-sm font-medium text-foreground/80 transition-all duration-300 hover:text-primary hover:scale-105">Contact</a>
-      </nav>
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#home" class="text-foreground/80 hover:text-foreground transition-colors">Home</a>
+        <a href="#technology-stack" class="text-foreground/80 hover:text-foreground transition-colors">Tech Stack</a>
+        <a href="#contact" class="text-foreground/80 hover:text-foreground transition-colors">Contact</a>
+      </div>
 
       <div class="flex items-center gap-3">
         <!-- Mobile Menu Button -->
@@ -363,8 +362,7 @@
     <div id="mobile-menu" class="md:hidden hidden border-t border-border bg-background">
       <div class="container mx-auto flex flex-col gap-4 p-4">
         <a href="#home" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Home</a>
-        <a href="#services" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Services</a>
-        <a href="#technology-stack" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Expertise</a>
+        <a href="#technology-stack" class="text-base font-medium py-2 px-4 rounded-lg hover:bg-primary/10 transition-colors" data-close-menu>Tech Stack</a>
         <a href="#contact" class="btn btn-primary w-full mt-2" data-close-menu>Contact Us</a>
       </div>
     </div>
@@ -383,8 +381,6 @@
             We build intelligent systems that amplify human potential, turning your complex challenges into impactful, data-driven outcomes.
           </p>
           <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact" class="btn btn-primary text-base px-8 py-4">Get Started</a>
-            <a href="#services" class="btn btn-outline text-base px-8 py-4">Our Services</a>
           </div>
         </div>
       </div>
